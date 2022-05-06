@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Administración de Peliculas | Web Harry Potter</title>
+<link rel="stylesheet" href="administrar.css">
+</head>
+<body>
+	<h1>Lista de Peliculas de Harry Potter</h1>
+	<a href="http://localhost/"><img alt="" src="https://cdn.pixabay.com/photo/2016/09/23/14/42/back-1689836_960_720.png" class="atras"></a>
+	<table>
+		<tr>
+			<th>Titulo</th>
+			<th>Sinopsis</th>
+			<th>Actores</th>
+			<th>Estreno</th>
+			<th>Duración</th>
+			<th>Portada</th>
+			<th>Trailer</th>
+			<th>Acción</th>
+		</tr>
+		<tr th:each="pelicula: ${peliculas}">
+			<th th:text="${pelicula.titulo}" />
+			<th th:text="${pelicula.sinopsis}" />
+			<th th:text="${pelicula.actores}" />
+			<th th:text="${pelicula.estreno}" />
+			<th th:text="${pelicula.duracion}" />
+			<th><img class="portada_administracion" th:src="@{${pelicula.portada}}"></img></th>
+			<th><a th:href="@{${pelicula.trailer}}" target="_blank">Ir a</a></th>
+			<th>
+			<!--<a th:href="@{/modificar_pelicula?id_to_update={id}(id=${pelicula.id})}"><button class="modificar">Modificar</button></a>-->
+			<a th:href="@{/administrar_peliculas?id_to_delete={id}(id=${pelicula.id})}"><button class="borrar">Borrar</button></a>
+			</th>
+		</tr>
+	</table>
+	
+	<div>
+			<h3>Agregar Peliculas</h3>
+			<form method="get" action="./administrar_peliculas">
+				<input type="text" name="titulo" placeholder="Nombre de la Pelicula" required>
+				<!--<input type="text" name="actores" placeholder="Actores de la Pelicula" required>-->
+				
+				<input type="number" name="estreno" placeholder="Año de estreno" required>
+				<input type="number" name="duracion" placeholder="Duración de la Pelicula (minutos)" required>
+				<input type="text" name="portada" placeholder="URL de Portada" required>
+				<input type="text" name="trailer" placeholder="URL del Trailer" required>
+				<input type="text" name="enlace" placeholder="Link de Compra" required><br>
+				<textarea rows="" cols="" name="actores" placeholder="Actores de la Pelicula" required></textarea>
+				<textarea rows="" cols="" name="sinopsis" placeholder="Sinopsis de la Pelicula" required></textarea><br>
+				<input type="submit" value="Agregar">
+			</form>
+		</div>
+
+</body>
+</html>

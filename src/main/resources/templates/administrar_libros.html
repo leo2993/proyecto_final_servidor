@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Administración de Libros | Web Harry Potter</title>
+<link rel="stylesheet" href="administrar.css">
+</head>
+<body>
+	<h1>Lista de Libros de Harry Potter</h1>
+	<a href="http://localhost/"><img alt="" src="https://cdn.pixabay.com/photo/2016/09/23/14/42/back-1689836_960_720.png" class="atras"></a>
+	<table>
+		<tr>
+			<th>Titulo</th>
+			<th>Portada</th>
+			<th>Autor</th>
+			<th>Enlace</th>
+			<th>Acción</th>
+		</tr>
+		<tr th:each="libro: ${libros}">
+			<th th:text="${libro.titulo}" />
+			<th><img class="portada_administracion" th:src="@{${libro.portada}}"></img></th>
+			<th th:text="${libro.autor}" />
+			<th><a th:href="@{${libro.enlace}}" target="_blank">Ir a</a></th>
+			<th>
+			<a th:href="@{/administrar_libros?id_to_delete={id}(id=${libro.id})}"><button class="borrar">Borrar</button></a>
+			</th>
+		</tr>
+	</table>
+	
+	<div>
+			<h3>Agregar Libro</h3>
+			<form method="get" action="./administrar_libros">
+				<input type="text" name="titulo" placeholder="Nombre del Libro" required>
+				<input type="text" name="portada" placeholder="URL de Portada" required>
+				<input type="text" name="autor" placeholder="Nombre del Autor" required>
+				<input type="text" name="enlace" placeholder="Link de Compra" required><br>
+				<input type="submit" value="Agregar">
+			</form>
+		</div>
+
+</body>
+</html>

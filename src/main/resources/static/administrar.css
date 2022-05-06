@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+h1 {
+text-align: center;
+}
+
+.portada_administracion{
+width: 100px;
+height: 150px;
+}
+
+textarea {
+margin-top: 10px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.atras {
+	width: 64px;
+	height: 64px;
+}
